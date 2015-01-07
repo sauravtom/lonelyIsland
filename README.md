@@ -1,9 +1,9 @@
-#Stack
+#LonelyIsland
 
-Stack is a solution for easily generating and managing static APIs.
-It is based in flask and sqlite3.
+Lonely Island will be a anonymous social networking platform, focussed towards positivity and encouragement.
+(sounds boring ? we still haven't finalized everything yet, so feel free to pitch something different.)
 
-It is in a very early stage right now.
+It is a based on python 2.7,flask and sqlite3.
 
 
 
