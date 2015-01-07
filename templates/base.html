@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} Morning App</title>
+
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    -->
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <meta name="description" content="algs.in Find interesting pictures, memes and videos to share">
+    <meta name="keywords" content="funny,meme,jokes,reddit,rage-comics,awesome-videos,documentaries,videos,video,algs,algs.in" >
+    
+  </head>
+  <script src='/static/js/jquery.min.js'></script>
+  <body>
+
+
+    <div id="container">
+        <div class="row">
+          {% block content %}{% endblock %}
+        </div>
+
+    </div>
+    
+    <div id="footer"></div>
+
+    <script src='/static/js/jquery.min.js'></script>
+    <script src='/static/js/prefixfree.min.js'></script>
+
+  </body>
+</html>

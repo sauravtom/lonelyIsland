@@ -1,0 +1,88 @@
+body,html,div,blockquote,img,label,p,h1,h2,h3,h4,h5,h6,pre,ul,ol,li,dl,dt,dd,form,a,fieldset,input,th,td {
+    
+    outline: none;
+}
+
+body {
+    font: 13px "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+    background-color: #fff;
+    min-width: 980px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+
+li{
+    list-style-type: none;
+}
+
+a{
+    color: #0087F7;
+    text-decoration: none;
+}
+a:link {
+    color: black;
+}
+a:hover{
+    color: orange;
+}
+
+.center{
+    text-align: center;
+}
+.small{
+    font-size: 90%;
+}
+.right{
+    float:right;
+}
+
+.post{
+    border:2px dashed;
+    width:450px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding:10px;
+    padding-bottom:20px;
+    padding-top: 0;
+}
+
+.title{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 170%;
+}
+
+.img{
+    #max-width: 500px;
+    width:450px;
+}
+
+.delete{
+    float:right;
+    color:red;
+}
+
+#add{
+    margin:0 auto;
+    border:2px;
+}
+
+#form{
+    border: 1px dashed;
+    margin:0 auto;
+    width:  550px;
+    height: 200px;
+    text-align: center;
+}
+
+.publish{
+    position: relative;
+
+    float:right;
+    width:300px;
+    height:100px;
+    font-size: 300%;
+}
+
+
+
