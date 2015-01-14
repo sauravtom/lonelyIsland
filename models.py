@@ -1,5 +1,4 @@
 from flask.ext.sqlalchemy import SQLAlchemy
-# from sqlalchemy import Table, Column, Float, Integer, String, MetaData, Text, Boolean, ForeignKey
 from flask import Flask
 from settings import app, db
 
@@ -9,7 +8,6 @@ class TimeStampedModel(db.Model):
 	modified = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
 class User(TimeStampedModel):
-	__table_args__ = {'extend_existing': True}
 	__tablename__ = 'users'
 
 	id = db.Column(db.Integer, primary_key=True)
@@ -17,7 +15,7 @@ class User(TimeStampedModel):
 	email = db.Column(db.String(120), unique=True, nullable=True)
 	post_ids = db.Column(db.String, default=None)
 	is_deleted = db.Column(db.Boolean, default=False)
-	posts = db.relationship('Posts', backref='users', lazy='dynamic')
+	posts = db.relationship('Post', backref='users', lazy='dynamic')
 	comments = db.relationship('Comment', backref='users', lazy='dynamic')
 
 	def __init__(self, password, email=None, post_ids=None):
@@ -28,8 +26,7 @@ class User(TimeStampedModel):
 	def __repr__(self):
 	    return '<User %r>' % self.email
 
-class Posts(TimeStampedModel):
-	__table_args__ = {'extend_existing': True}
+class Post(TimeStampedModel):
 	__tablename__ = 'posts'
 
 	id = db.Column(db.Integer, primary_key=True)
@@ -58,7 +55,6 @@ class Posts(TimeStampedModel):
 		return Post.query.filter_by(user_id=user_id)
 
 class Comment(TimeStampedModel):
-	__table_args__ = {'extend_existing': True}
 	__tablename__ = 'comments'
 
 	id = db.Column(db.Integer, primary_key=True)
@@ -70,7 +66,8 @@ class Comment(TimeStampedModel):
 	upvoted_by = db.Column(db.String, default=None)
 	is_deleted = db.Column(db.Boolean, default=False)
 
-	def __init__(self, content, user_id, image=None, upvotes=0, upvoted_by=None):
+	def __init__(self, post_id, content, user_id, image=None, upvotes=0, upvoted_by=None):
+		self.post_id = post_id
 		self.content = content
 		self.user_id = user_id
 		self.image = image
