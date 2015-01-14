@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import flask, flask.views
-app = flask.Flask(__name__)
+from settings import app
 
 from flask import render_template
 from flask import request
@@ -55,4 +55,4 @@ def edit():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8000)
