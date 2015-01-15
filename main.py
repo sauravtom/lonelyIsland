@@ -34,11 +34,14 @@ def login():
                 return flask.redirect(url_for('home'))
     return render_template("login.html")
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
 @app.route('/')
 @login_required
 def home():
     arr = Post.query.filter_by(is_deleted=0)
-    print arr
     return flask.render_template('index.html',arr=arr,mode='normal')
 
 @app.route('/view/<id>')
