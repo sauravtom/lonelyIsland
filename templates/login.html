@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block title %}Index{% endblock %}
+
+
+{% block content %}
+
+  {% if mode == 'update' %}
+    <script type="text/javascript">
+    //alert("yahoo");
+    $(".post,.center,.publish").hide();
+
+    //set form action to /edit
+    //set form title
+    //set form values
+    //set form button text
+    </script>
+  {% endif %}
+
+
+  <form class="form-horizontal" enctype="multipart/form-data" action='/login' method='GET'>
+
+          <h2 id="form_title">Add Comment</h2>
+          <div class="form-group">
+            <input type="text" name='user_name' class="form-control" >
+            <input type="text" name='user_password' class="form-control" >
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+
+      </form>
+
+ 
+
+
+{% endblock %}

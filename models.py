@@ -12,19 +12,36 @@ class User(TimeStampedModel):
 
 	id = db.Column(db.Integer, primary_key=True)
 	password = db.Column(db.Text)
+	username = db.Column(db.String(20), unique=True, nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=True)
 	post_ids = db.Column(db.String, default=None)
 	is_deleted = db.Column(db.Boolean, default=False)
 	posts = db.relationship('Post', backref='users', lazy='dynamic')
 	comments = db.relationship('Comment', backref='users', lazy='dynamic')
 
-	def __init__(self, password, email=None, post_ids=None):
+	def __init__(self, password, username, email=None, post_ids=None):
 		self.password = password
+		self.username = username
 		self.email = email
 		self.post_ids = post_ids
 
-	def __repr__(self):
-	    return '<User %r>' % self.email
+	def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        try:
+            return unicode(self.id)  # python 2
+        except NameError:
+            return str(self.id)  # python 3
+
+    def __repr__(self):
+        return '<User %r>' % (self.username)
 
 class Post(TimeStampedModel):
 	__tablename__ = 'posts'
@@ -45,8 +62,8 @@ class Post(TimeStampedModel):
 		self.upvotes = upvotes
 		self.upvoted_by = upvoted_by
 	
-	def __repr__(self):
-		return 'content %s' % self.content
+	# def __repr__(self):
+	# 	return 'content %s' % self.content
 
 	def get_all_posts(self):
 		return Post.query.all()

@@ -20,17 +20,16 @@
 
   <br><br>
   <h1 class="center">The Lonely Island</h1><br><br>
-  <button class="btn btn-primary publish">Publish</button>
-
+  
   {% for i in arr %}
       <div class="post">
-        <a href="/view/{{i[0]}}">
-          <p class="title">{{i[2]}}</p>
+        <a href="/view/{{i.id}}">
+          <p class="title">{{i.content}}</p>
         </a>
         <p class="small user_name">posted by {{i[1]}}</p><br><br>
         
-        <a class="small right alert" href="/edit?post_id={{i[0]}}&action=delete">_delete</a>
-        <a class="small right" href="/edit?post_id={{i[0]}}&action=edit&post_title={{i[1]}}&post_url={{i[2]}}&image_url={{i[3]}}">comment_</a>
+        <a class="small right alert" href="/edit?post_id={{i.id}}&action=delete">_delete</a>
+        <a class="small right" href="/edit?post_id={{i.id}}&action=edit&post_title={{i.content}}&post_url={{i[2]}}&image_url={{i[3]}}">comment_</a>
       </div>
   {%endfor%}
 
@@ -43,7 +42,8 @@
 
           <h2 id="form_title">Add new Post</h2>
           <div class="form-group">
-            <input type="text" name='post_text' class="form-control" placeholder="Type your heart out" >
+            <input type="text" name='post_content' class="form-control" placeholder="Type your heart out" >
+            <input type="hidden" name='user_id' class="form-control" value="foo_user" >
           </div>
 
           <div class="form-group">
