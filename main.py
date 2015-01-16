@@ -42,7 +42,7 @@ def before_request():
 @login_required
 def home():
     arr = Post.query.filter_by(is_deleted=0)
-    return flask.render_template('index.html',arr=arr,mode='normal')
+    return flask.render_template('index.html',arr=arr)
 
 @app.route('/view/<id>')
 @login_required

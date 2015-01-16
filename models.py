@@ -1,6 +1,7 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask import Flask
 from settings import app, db
+import sys
 
 class TimeStampedModel(db.Model):
 	__abstract__ = True
@@ -99,3 +100,8 @@ class Comment(TimeStampedModel):
 
 	def get_all_comments_user(self, user_id):
 		return Comment.query.filter_by(user_id=user_id)
+
+if __name__ == '__main__':
+	if sys.argv[1] == 'init':
+		db.create_all()
+
