@@ -6,43 +6,11 @@
 
 {% block content %}
 
-  {% if mode == 'update' %}
-    <script type="text/javascript">
-    //alert("yahoo");
-    $(".post,.center,.publish").hide();
-
-    //set form action to /edit
-    //set form title
-    //set form values
-    //set form button text
-    </script>
-  {% endif %}
-
-  <br><br>
-  <h1 class="center">The Lonely Island</h1><br><br>
-  
-  {% for i in arr %}
-      <div class="post">
-        <a href="/view/{{i.id}}">
-          <p class="title">{{i.content}}</p>
-        </a>
-        <p class="small user_name">posted by {{i.users.username}}</p><br><br>
-        
-        <a class="small right alert" href="/edit?post_id={{i.id}}&action=delete">_delete</a>
-        <a class="small right" href="/edit?post_id={{i.id}}&action=edit&post_title={{i.content}}&post_url={{i[2]}}&image_url={{i[3]}}">comment_</a>
-      </div>
-  {%endfor%}
-
-  <div id="form">
-      <button id="add" class="btn btn-primary">+</button>
-      <br><br><br>
-
+  <div id="Add_form">
 
       <form class="form-horizontal" enctype="multipart/form-data" action='/add' method='GET'>
-
-          <h2 id="form_title">Add new Post</h2>
           <div class="form-group">
-            <input type="text" name='post_content' class="form-control" placeholder="Type your heart out" >
+            <input type="text" name='post_content' class="form-control" placeholder="Add a new post." >
             <input type="hidden" name='user_id' class="form-control" value="{{ g.user.get_id() }}">
           </div>
 
@@ -54,14 +22,14 @@
 
       </form>
   </div>
-
-  <script type="text/javascript">
-  var btn = $('#add');
-  var form = $('form');
-  btn.onClick = (function() {
-    alert('Invalid');
-  });
-  </script>
+  <br><br>
+  {% for i in arr %}
+      <div class="post">
+        <a href="/view/{{i.id}}">
+          <p class="title">{{i.content}}</p>
+        </a>
+      </div>
+  {%endfor%}
 
 
 {% endblock %}
