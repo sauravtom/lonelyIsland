@@ -71,7 +71,7 @@ def add_comment():
     add_comment = Comment(post_id, comment, user_id)
     db.session.add(add_comment)
     db.session.commit()
-    return flask.redirect("/#sa")
+    return flask.redirect("/view/%s"%post_id)
 
 @app.route('/edit',methods=['GET'])
 @login_required

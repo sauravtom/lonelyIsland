@@ -35,6 +35,9 @@ class User(TimeStampedModel):
 	def is_anonymous(self):
 		return False
 
+	def get_username(self):
+		return self.username
+
 	def get_id(self):
 		try:
 			return unicode(self.id)  # python 2
