@@ -102,6 +102,29 @@ def edit():
 
     return flask.redirect("/#error")
 
+@app.route('/upvote_post',methods=['POST'])
+@login_required
+def upvote_post():
+    post_id = request.form.get('post_id')
+    user_id = request.form.get('user_id')
+    try:
+        get_post = Post.query.filter_by(id=post_id).first()
+        upvoted_by = [get_post.upvoted_by] if get_post.upvoted_by else []
+        if not user_id in upvoted_by:
+            get_post.upvotes = get_post.upvotes + 1
+            get_posts = upvoted_by.append(user_id)
+            db.session.add(get_post)
+            db.session.commit()
+            return ""
+        else:
+            # flash an error saying that user has already upvoted
+            pass
+    except:
+        # no such post exists
+        pass
+    return ""
+
+
 @app.route('/logout')
 def logout():
     logout_user()

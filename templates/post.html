@@ -11,6 +11,14 @@
   
   <div class="post">
     <p class="title">{{post.content}}</p>
+    <p id="upvote_count" class="upvotes">upvotes: {{post.upvotes}}</p>
+    <!-- <form class="form-horizontal comment_form" enctype="multipart/form-data" action='/upvote_post' method='POST'> -->
+      <input type="hidden" id='user_id' name='user_id' class="form-control" value="{{ g.user.get_id() }}" >
+      <input type="hidden" id='post_id' name='post_id' class="form-control" value="{{ post.id }}" >
+      <a href="#" id="upvote" class="upvote">Upvote</a>
+    <!-- </form> -->
+    <div id="target"></div>
+    <br>
   </div>
 
   <div class="comment">
@@ -37,7 +45,8 @@
         {%endfor%}
       </ul>
   </div>
+
+<script src='/static/js/jquery-1.11.2.min.js'></script>
+<script type="text/javascript" src="/static/js/upvote.js"></script>
  
-
-
 {% endblock %}
