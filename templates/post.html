@@ -11,7 +11,12 @@
   
   <div class="post_page border">
     <p class="title">{{post.content}}</p>
-  </div>
+    <p id="upvote_count" class="upvotes">upvotes: {{post.upvotes}}</p>
+    <input type="hidden" id='user_id' name='user_id' class="form-control" value="{{ g.user.get_id() }}" >
+    <input type="hidden" id='post_id' name='post_id' class="form-control" value="{{ post.id }}" >
+    <button id="upvote" type="submit" class="btn btn-primary">Upvote</button>
+    <div id="target"></div>
+    </div>
   <br><br>
   <div class="comment border">
       <form class="form-horizontal comment_form" enctype="multipart/form-data" action='/add_comment' method='GET'>
@@ -44,6 +49,6 @@
       </ul>
   </div>
  
-
+<script type="text/javascript" src="/static/js/upvote.js"></script>
 
 {% endblock %}

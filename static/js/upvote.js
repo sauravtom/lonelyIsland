@@ -8,13 +8,15 @@ upvote_button.addEventListener(
         $.ajax({
             url: '/upvote_post',
             type:'POST',
-            data:
-            {
+            data: {
                 user_id: user_id,
                 post_id: post_id,
             },
-            success: function(msg)
-            {
+            beforeSend: function () {
+                document.getElementById("target").innerText = "Please wait...";
+            },
+            success: function(msg) {
+                document.getElementById("target").innerText = '';
                 var upvote_count = document.getElementById("upvote_count");
                 upvote_count.textContent = "upvotes: " + (parseInt(upvote_count.textContent.slice(-2)) + 1);
                 alert('upvoted');

@@ -2,7 +2,7 @@
 
 import flask, flask.views
 from settings import app, login_manager
-from flask import render_template, request, url_for, abort, g
+from flask import render_template, request, url_for, abort, g, flash
 import json
 import os
 from dbHelper import DB
@@ -109,10 +109,14 @@ def upvote_post():
     user_id = request.form.get('user_id')
     try:
         get_post = Post.query.filter_by(id=post_id).first()
-        upvoted_by = [get_post.upvoted_by] if get_post.upvoted_by else []
+        upvoted_by = get_post.upvoted_by if get_post.upvoted_by else {}
+        upvoted_by = json.loads(upvoted_by)
         if not user_id in upvoted_by:
             get_post.upvotes = get_post.upvotes + 1
-            get_posts = upvoted_by.append(user_id)
+            upvoted_by.append(str(user_id))
+            print upvoted_by
+            get_post.upvoted_by = json.dumps(upvoted_by)
+            print get_post.upvoted_by
             db.session.add(get_post)
             db.session.commit()
             return ""
