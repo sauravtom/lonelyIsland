@@ -1,0 +1,161 @@
+body {
+    background-image: url("/static/sativa.png");
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    overflow-x: hidden;
+    width:100%;
+}
+.navbar{
+    height:70px;
+    vertical-align: middle;
+    opacity: 0.9;
+}
+
+.site-title{
+    font-size: 250%;
+    font-weight: bolder;
+    float:left;
+}
+.center{
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+a:hover{
+    color: #dc4d38;
+}
+a:visited{
+    color:black;
+}
+
+.border{
+    border:1px dashed;
+}
+
+#container {
+    margin: 0 auto;
+    margin-top: 50px;
+    width:100%;
+}
+
+.list {
+    margin-left: 250px;
+    max-width:920px;
+    height:100%;
+}
+
+.post{
+    padding-bottom: 100px;
+    min-width: 10px;
+}
+
+.title{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 170%;
+    padding-bottom: 0px;
+    margin-bottom: -10px;
+}
+
+.media{
+    max-width: 500px;
+    min-width: 10px;
+}
+
+.media>img{
+    min-width: 10px;
+}
+
+
+.right{
+    height:500px; 
+}
+
+
+.social{
+    text-align: center;
+    width:500px;
+    position: relative;
+    bottom:1px;
+    left:1px;
+    margin-top:5px;
+}
+
+.social>i{
+    opacity: 0.3;
+}
+.social>i:hover{
+    opacity: 1;
+}
+.social>i{
+    margin-left: 25px;
+    cursor: pointer;
+}
+.social>a:link{
+    color:black;
+}
+
+
+@media(max-width:767px){
+    .list{
+        margin-left: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+    }
+    .media{
+        width:100%;
+    }
+    .title{
+        text-align: center;
+    }
+    .social{
+        width:100%;
+    }
+    .sider{
+        display:none;
+    }
+
+}
+
+.fb-comments{
+    width:100%;
+}
+
+
+@media (max-width: 480px){
+    .title{
+        text-align: left;
+    }
+}
+
+#footer{
+    position: relative;
+    width:100%;
+    height:200px;
+    color:black;
+    background: rgba(200, 182, 180, 0.66);
+}
+#footer>.links{
+    position: absolute; 
+    bottom: 120px;
+    width:100%;
+    border:1px;
+    opacity: 0.4;
+    text-align: center;
+}
+#footer>.links>.link{
+    padding-left: 20px;
+    padding-right: 20px;
+}
