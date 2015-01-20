@@ -9,44 +9,41 @@
 
 {% block content %}
   
-  <div class="post">
+  <div class="post_page border">
     <p class="title">{{post.content}}</p>
-    <p id="upvote_count" class="upvotes">upvotes: {{post.upvotes}}</p>
-    <!-- <form class="form-horizontal comment_form" enctype="multipart/form-data" action='/upvote_post' method='POST'> -->
-      <input type="hidden" id='user_id' name='user_id' class="form-control" value="{{ g.user.get_id() }}" >
-      <input type="hidden" id='post_id' name='post_id' class="form-control" value="{{ post.id }}" >
-      <a href="#" id="upvote" class="upvote">Upvote</a>
-    <!-- </form> -->
-    <div id="target"></div>
-    <br>
   </div>
-
-  <div class="comment">
+  <br><br>
+  <div class="comment border">
       <form class="form-horizontal comment_form" enctype="multipart/form-data" action='/add_comment' method='GET'>
+
+          <div class="row">
+            <div class="col-md-10">
               <div class="form-group">
                 <textarea type ="text" name="comment" class="form-control input-sm" placeholder="Add a comment"></textarea>
                 <input type="hidden" name='user_id' class="form-control" value="{{g.user.get_username()}}" >
                 <input type="hidden" name='post_id' class="form-control" value="{{post.id}}" >
               </div>
-
+            </div>
+            <div class="col-md-2">
               <div class="form-group center btn">
                 <div class="col-xs-offset-2 col-xs-10">
                   <button type="submit" class="btn btn-primary">Add</button>
                 </div>
               </div>
+            </div>
+          </div>
 
           </form>
 
       <ul class="comment_list">
         {% for i in comments %}
             <li>
-              <p class="text">{{i.content}}</p>
+              <p class="text">+ {{i.content}}</p>
             </li>
         {%endfor%}
       </ul>
   </div>
-
-<script src='/static/js/jquery-1.11.2.min.js'></script>
-<script type="text/javascript" src="/static/js/upvote.js"></script>
  
+
+
 {% endblock %}
