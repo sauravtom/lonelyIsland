@@ -113,7 +113,7 @@ a:visited{
     margin-top:50px;
 }
 
-#Add_form{
+#Add_form,#login_form{
     margin: 0 auto;
     text-align: center;
     width:510px;
