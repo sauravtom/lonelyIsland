@@ -18,11 +18,8 @@
   <body>
 
     <div class="header">
-      <a href="/">
-        <p class="title left">Lonely Island</p>
-      </a>
-      <p class="username right">{% block username %}{% endblock %}</p>
-      <a href="" class="right">Logout</a>
+      <a class="title border" href="/">Lonely Island</a>
+      <a href="" class="logout right border">Logout {% block username %}{% endblock %}</a>
     </div>
 
     <div id="container">

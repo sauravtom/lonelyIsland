@@ -9,23 +9,29 @@
 
 {% block content %}
   
-  <div class="post">
+  <div class="post_page border">
     <p class="title">{{post.content}}</p>
   </div>
-
-  <div class="comment">
+  <br><br>
+  <div class="comment border">
       <form class="form-horizontal comment_form" enctype="multipart/form-data" action='/add_comment' method='GET'>
+
+          <div class="row">
+            <div class="col-md-10">
               <div class="form-group">
                 <textarea type ="text" name="comment" class="form-control input-sm" placeholder="Add a comment"></textarea>
                 <input type="hidden" name='user_id' class="form-control" value="{{g.user.get_username()}}" >
                 <input type="hidden" name='post_id' class="form-control" value="{{post.id}}" >
               </div>
-
+            </div>
+            <div class="col-md-2">
               <div class="form-group center btn">
                 <div class="col-xs-offset-2 col-xs-10">
                   <button type="submit" class="btn btn-primary">Add</button>
                 </div>
               </div>
+            </div>
+          </div>
 
           </form>
 
