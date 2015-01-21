@@ -2,7 +2,7 @@
 
 import flask, flask.views
 from settings import app, login_manager
-from flask import render_template, request, url_for, abort, g
+from flask import render_template, request, url_for, abort, g, flash
 import json
 import os
 from dbHelper import DB
@@ -101,6 +101,33 @@ def edit():
         return flask.redirect("/#su")
 
     return flask.redirect("/#error")
+
+@app.route('/upvote_post',methods=['POST'])
+@login_required
+def upvote_post():
+    post_id = request.form.get('post_id')
+    user_id = request.form.get('user_id')
+    try:
+        get_post = Post.query.filter_by(id=post_id).first()
+        upvoted_by = get_post.upvoted_by if get_post.upvoted_by else {}
+        upvoted_by = json.loads(upvoted_by)
+        if not user_id in upvoted_by:
+            get_post.upvotes = get_post.upvotes + 1
+            upvoted_by.append(str(user_id))
+            print upvoted_by
+            get_post.upvoted_by = json.dumps(upvoted_by)
+            print get_post.upvoted_by
+            db.session.add(get_post)
+            db.session.commit()
+            return ""
+        else:
+            # flash an error saying that user has already upvoted
+            pass
+    except:
+        # no such post exists
+        pass
+    return ""
+
 
 @app.route('/logout')
 def logout():
