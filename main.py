@@ -13,10 +13,10 @@ from flask.ext.login import login_user , logout_user , current_user , login_requ
 def load_user(id):
     return User.query.get(int(id))
 
-@app.route("/login", methods=["GET"])
+@app.route("/login", methods=["POST"])
 def login():
-    user_name = request.args.get('user_name') or ''
-    user_password = request.args.get('user_password') or ''
+    user_name = request.form.get('user_name') or ''
+    user_password = request.form.get('user_password') or ''
     if user_name and user_password:
         user_exists = User.query.filter_by(username=user_name,password=user_password).first()
         if user_exists: # user authenticated
@@ -57,9 +57,13 @@ def view(id):
 def add():
     post_content = request.args.get('post_content')
     user_id = request.args.get('user_id')
-    add_post = Post(post_content, user_id)
-    db.session.add(add_post)
-    db.session.commit()
+    if 0 < len(post_content) < 140:
+        add_post = Post(post_content, user_id)
+        db.session.add(add_post)
+        db.session.commit()
+    else:
+        pass
+        # flash an error message
     return flask.redirect("/#sa")
 
 @app.route('/add_comment',methods=['GET'])

@@ -1,5 +1,5 @@
 body {
-    background-image: url("/static/restaurant_icons.png");
+    background-image: url("/static/map.png");
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
     overflow-x: hidden;
@@ -71,21 +71,22 @@ a:visited{
 
 .post{
     text-align: left;
-    width:450px;
+    width: 800px;
+    background-color: white;
     margin: 0 auto;
     margin-bottom: 50px;
     padding:10px;
     padding-bottom:20px;
-    padding-top: 0;
+    padding-top: 20px;
     margin-bottom: -20px;
 }
 
-.post>a>.title{
+.post>div>a>.title{
     text-align: left;
     font-weight: bolder;
     font-size: 150%;
     padding: 20px;
-    border: 1px dashed;
+    /*border: 1px dashed;*/
 }
 
 .post_page{
@@ -120,6 +121,17 @@ a:visited{
     border:5px solid rgba(255, 165, 0, 0.4);
     background: rgba(255, 165, 0, 0.37);
     border-radius: 10px;
+    padding: 12px 50px 0px 50px;
+}
+
+.add_form {
+    /*margin: 0 auto;*/
+    margin-bottom: 0;
+    text-align: center;
+    width:800px;
+    /*border:5px solid rgba(255, 165, 0, 0.4);*/
+    background: rgba(255, 165, 0, 0.37);
+    /*border-radius: 10px;*/
     padding: 12px 50px 0px 50px;
 }
 

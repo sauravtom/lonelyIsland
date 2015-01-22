@@ -6,14 +6,14 @@
 
 {% block content %}
 
-  <div id="Add_form">
+  <div class="post add_form">
 
       <form class="form-horizontal" enctype="multipart/form-data" action='/add' method='GET'>
 
         <div class="row">
           <div class="col-md-10">
             <div class="form-group">
-              <textarea type="text" name='post_content' class="form-control input-lg" placeholder="Add a new post."></textarea>
+              <textarea type="text" name='post_content' class="form-control input-lg" placeholder="Share something nice.."></textarea>
               <input type="hidden" name='user_id' class="form-control" value="{{ g.user.get_id() }}">
             </div>
           </div>
@@ -32,10 +32,14 @@
   <br><br>
 
   {% for i in arr %}
-      <div class="post">
-        <a href="/view/{{i.id}}">
-          <p class="title">{{i.content}}</p>
-        </a>
+      <div class="row post">
+        <div class="col-md-12">
+          <i class="fa fa-sort-asc"></i>
+          <a href="/view/{{i.id}}">
+            <p class="title">{{i.content}}</p>
+          </a>
+          <hr>
+        </div>
       </div>
   {%endfor%}
 
