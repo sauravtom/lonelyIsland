@@ -34,10 +34,11 @@
   {% for i in arr %}
       <div class="row post">
         <div class="col-md-12">
-          <i class="fa fa-sort-asc"></i>
+          <i id="upvote-icon" class="fa fa-sort-asc"></i>
           <a href="/view/{{i.id}}">
             <p class="title">{{i.content}}</p>
           </a>
+          <i id="flag-icon" class="fa fa-flag"></i>
           <hr>
         </div>
       </div>
