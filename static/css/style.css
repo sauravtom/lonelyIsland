@@ -1,5 +1,5 @@
 body {
-    background-image: url("/static/map.png");
+    /*background-image: url("/static/map.png");*/
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
     overflow-x: hidden;
@@ -139,4 +139,6 @@ a:visited{
     padding:15px;
 }
 
-
+#flag-icon {
+    float: right;
+}
